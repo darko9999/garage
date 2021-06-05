@@ -1,0 +1,27 @@
+body {
+  padding: 50px;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #ff10f3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 a {
+  font-size: 16px;
+}
+
+p.Opened {
+  color: red;
+}
+
+p.Opening,
+p.Closing {
+  color: orange;
+}
+
+p.Closed {
+  color: green;
+}
