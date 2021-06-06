@@ -132,6 +132,10 @@ function forceDoorState(doorState) {
 app.get("/status", (req, res) => {
     res.render("status", { status: JSON.stringify(state, null, "  ") });
 });
+app.get("/status.json", (req, res) => {
+    res.contentType("application/json");
+    res.send(JSON.stringify(state));
+});
 // assume 404 since no middleware responded
 app.use(function (req, res, next) {
     res.status(404).render("404", { url: req.originalUrl });
