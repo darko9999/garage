@@ -16,7 +16,7 @@ var DoorStates;
     DoorStates["Unknown"] = "Unknown";
 })(DoorStates || (DoorStates = {}));
 const app = express_1.default();
-const port = 8080;
+const port = 80;
 const state = {
     doorState: DoorStates.Unknown,
     goalState: DoorStates.Unknown,
