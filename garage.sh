@@ -1,5 +1,6 @@
 #!/bin/bash
 cd garage
-git pull
+git fetch
+git reset --hard origin/master
 yarn install --prod
 sudo NODE_ENV=production node src/server.js
