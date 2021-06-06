@@ -1,8 +1,10 @@
 body {
   margin: 50px;
+  color: lightgray;
   font-size: medium;
   font-weight: lighter;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: black;
 }
 
 a {
@@ -21,7 +23,7 @@ li {
 }
 
 li a {
-  color: black;
+  color: gray;
 }
 
 p.state {

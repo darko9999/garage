@@ -20,4 +20,3 @@ The compiled JS version is included.
 * add some icons
 * add favicons
 * animate transition state?
-* dark mode?
