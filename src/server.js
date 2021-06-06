@@ -15,8 +15,6 @@ var DoorStates;
     DoorStates["Opening"] = "Opening";
     DoorStates["Unknown"] = "Unknown";
 })(DoorStates || (DoorStates = {}));
-const app = express_1.default();
-const port = 80;
 const state = {
     doorState: DoorStates.Unknown,
     goalState: DoorStates.Unknown,
@@ -32,6 +30,7 @@ const BUTTON_PRESS_MS = 2 * 1000; // Button press duration
 const ACTION_DELAY_MS = 5 * 1000; // Min delay between actions
 const BUTTON_PASSIVE = rpio_1.default.HIGH;
 const BUTTON_ACTIVE = rpio_1.default.LOW;
+rpio_1.default.on("warn", function (error) { });
 rpio_1.default.init({
     gpiomem: true,
     mapping: "physical",
@@ -89,6 +88,7 @@ function pushButton() {
         console.log("Releasing button");
     }, BUTTON_PRESS_MS);
 }
+const app = express_1.default();
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 app.set("view engine", "hbs");
 app.set("views", path_1.default.join(__dirname, "views"));
@@ -140,6 +140,7 @@ app.get("/status.json", (req, res) => {
 app.use(function (req, res, next) {
     res.status(404).render("404", { url: req.originalUrl });
 });
+const port = process.env.NODE_ENV === "production" ? 80 : 8080;
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
 });

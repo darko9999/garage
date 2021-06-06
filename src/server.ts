@@ -11,9 +11,6 @@ enum DoorStates {
   Unknown = "Unknown",
 }
 
-const app = express();
-const port = 80;
-
 const state = {
   doorState: DoorStates.Unknown,
   goalState: DoorStates.Unknown,
@@ -30,6 +27,8 @@ const BUTTON_PRESS_MS = 2 * 1000; // Button press duration
 const ACTION_DELAY_MS = 5 * 1000; // Min delay between actions
 const BUTTON_PASSIVE = rpio.HIGH;
 const BUTTON_ACTIVE = rpio.LOW;
+
+rpio.on("warn", function (error: string) {});
 
 rpio.init({
   gpiomem: true,
@@ -94,6 +93,8 @@ function pushButton() {
   }, BUTTON_PRESS_MS);
 }
 
+const app = express();
+
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
@@ -155,6 +156,7 @@ app.use(function (req, res, next) {
   res.status(404).render("404", { url: req.originalUrl });
 });
 
+const port = process.env.NODE_ENV === "production" ? 80 : 8080;
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });
