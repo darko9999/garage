@@ -42,11 +42,13 @@ rpio_1.default.open(BUTTON_PIN, rpio_1.default.OUTPUT);
 function updateState() {
     const now = luxon_1.DateTime.now();
     if (now.diff(state.updateTimestamp).toMillis() < 100) {
+        console.log("Need to wait mone");
         return;
     }
     state.updateTimestamp = now;
     const is_opened = rpio_1.default.read(OPEN_PIN) == rpio_1.default.LOW;
     if (is_opened) {
+        console.log("Got is_opened");
         state.doorState = DoorStates.Opened;
         if (state.goalState == DoorStates.Opened) {
             state.goalState = DoorStates.Unknown;
@@ -56,6 +58,7 @@ function updateState() {
     }
     const is_closed = rpio_1.default.read(CLOSE_PIN) == rpio_1.default.LOW;
     if (is_closed) {
+        console.log("Got is_closed");
         state.doorState = DoorStates.Closed;
         if (state.goalState == DoorStates.Closed) {
             state.goalState = DoorStates.Unknown;
@@ -76,9 +79,11 @@ setInterval(() => {
 function pushButton() {
     rpio_1.default.write(BUTTON_PIN, rpio_1.default.HIGH);
     state.button = true;
+    console.log("Pushing button");
     setTimeout(() => {
         rpio_1.default.write(BUTTON_PIN, rpio_1.default.LOW);
         state.button = false;
+        console.log("Releasing button");
     }, BUTTON_PRESS_MS);
 }
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
@@ -110,6 +115,9 @@ function changeToGoal(goal) {
             state.goalTimestamp = now;
             pushButton();
         }
+    }
+    else {
+        console.log("Need more time before next action");
     }
 }
 app.get("/set-open", (req, res) => {
