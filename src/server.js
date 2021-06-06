@@ -48,9 +48,9 @@ function updateState() {
     state.updateTimestamp = now;
     const is_opened = rpio_1.default.read(OPEN_PIN) == rpio_1.default.LOW;
     if (is_opened) {
-        console.log("Got is_opened");
         state.doorState = DoorStates.Opened;
         if (state.goalState == DoorStates.Opened) {
+            console.log("Done opening");
             state.goalState = DoorStates.Unknown;
             state.goalTimestamp = now;
         }
@@ -58,9 +58,9 @@ function updateState() {
     }
     const is_closed = rpio_1.default.read(CLOSE_PIN) == rpio_1.default.LOW;
     if (is_closed) {
-        console.log("Got is_closed");
         state.doorState = DoorStates.Closed;
         if (state.goalState == DoorStates.Closed) {
+            console.log("Done closing");
             state.goalState = DoorStates.Unknown;
             state.goalTimestamp = now;
         }
