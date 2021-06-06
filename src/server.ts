@@ -12,7 +12,7 @@ enum DoorStates {
 }
 
 const app = express();
-const port = 80;
+const port = 8080;
 
 const state = {
   doorState: DoorStates.Unknown,
