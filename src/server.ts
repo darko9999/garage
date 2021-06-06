@@ -32,7 +32,7 @@ const ACTION_DELAY_MS = 5 * 1000; // Min delay between actions
 rpio.init({
   gpiomem: true,
   mapping: "physical",
-  mock: MOCK,
+  //   mock: MOCK,
   close_on_exit: true,
 });
 

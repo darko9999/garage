@@ -33,7 +33,7 @@ const ACTION_DELAY_MS = 5 * 1000; // Min delay between actions
 rpio_1.default.init({
     gpiomem: true,
     mapping: "physical",
-    mock: MOCK,
+    //   mock: MOCK,
     close_on_exit: true,
 });
 rpio_1.default.open(OPEN_PIN, rpio_1.default.INPUT, rpio_1.default.PULL_UP);
