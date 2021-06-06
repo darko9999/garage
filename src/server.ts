@@ -124,7 +124,7 @@ function changeToGoal(goal: DoorStates) {
 }
 
 app.get("/set-open", (req: any, res) => {
-  forceDoorState(DoorStates.Closed);
+  forceDoorState(DoorStates.Opened);
   res.redirect("/");
 });
 
