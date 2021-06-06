@@ -1,0 +1,1 @@
+dtoverlay=gpio-no-irq
