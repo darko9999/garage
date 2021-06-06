@@ -45,7 +45,6 @@ function updateState() {
         return;
     }
     state.updateTimestamp = now;
-    state.button = rpio_1.default.read(BUTTON_PIN) == rpio_1.default.HIGH;
     const is_opened = rpio_1.default.read(OPEN_PIN) == rpio_1.default.LOW;
     if (is_opened) {
         state.doorState = DoorStates.Opened;

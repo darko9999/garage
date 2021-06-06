@@ -46,7 +46,6 @@ function updateState() {
     return;
   }
   state.updateTimestamp = now;
-  state.button = rpio.read(BUTTON_PIN) == rpio.HIGH;
 
   const is_opened = rpio.read(OPEN_PIN) == rpio.LOW;
   if (is_opened) {
