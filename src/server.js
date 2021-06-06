@@ -93,14 +93,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "public")));
 app.set("view engine", "hbs");
 app.set("views", path_1.default.join(__dirname, "views"));
 app.get("/", (req, res) => {
-    const menus = [
-        { name: "Open", path: "/open" },
-        { name: "Close", path: "/close" },
-        { name: "Status", path: "/status" },
-        { name: "Set Open", path: "/set-open" },
-        { name: "Set Close", path: "/set-close" },
-    ];
-    res.render("index", { menus, state });
+    res.render("index", { state });
 });
 app.get("/open", (req, res) => {
     changeToGoal(DoorStates.Opened);

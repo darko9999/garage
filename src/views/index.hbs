@@ -2,16 +2,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Garage Door</title>
+    <title>Garage</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Garage Door Controller</h1>
-    <p class="{{state.doorState}}">State: {{state.doorState}}</p>
+    <h1>Garage</h1>
+    <p class="state {{state.doorState}}">State: {{state.doorState}}</p>
     <ul>
-      {{#each menus}}
-        <li><a href="{{this.path}}">{{this.name}}</a></li>
-      {{/each}}
+      <li class="open"><a href="/open">Open</a></li>
+      <li class="close"><a href="/close">Close</a></li>
+      <li class="status"><a href="/status">Status</a></li>
+      <li class="set_open"><a href="/set-open">Set Open</a></li>
+      <li class="set_close"><a href="/set-close">Set Close</a></li>
     </ul>
   </body>
 </html>

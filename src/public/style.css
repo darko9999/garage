@@ -1,27 +1,44 @@
 body {
-  padding: 50px;
-  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 50px;
+  font-size: medium;
+  font-weight: lighter;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
 a {
-  color: #ff10f3;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
-h1 a {
-  font-size: 16px;
+
+li {
+  font-size: medium;
+  list-style-type: none;
+  font-weight: bolder;
+  margin: 15px;
 }
 
-p.Opened {
-  color: red;
+li a {
+  color: black;
 }
 
-p.Opening,
-p.Closing {
+p.state {
+  font-size: xx-large;
   color: orange;
 }
 
-p.Closed {
+p.Opened,
+li.open a {
+  font-size: xx-large;
+  color: red;
+  margin: 20px;
+}
+
+p.Closed,
+li.close a {
+  font-size: xx-large;
   color: green;
+  margin: 20px;
 }
