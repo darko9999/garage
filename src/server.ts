@@ -28,6 +28,8 @@ const CLOSE_PIN = 36; //Closed sensor
 const BUTTON_PIN = 11; //Button relay
 const BUTTON_PRESS_MS = 2 * 1000; // Button press duration
 const ACTION_DELAY_MS = 5 * 1000; // Min delay between actions
+const BUTTON_PASSIVE = rpio.HIGH;
+const BUTTON_ACTIVE = rpio.LOW;
 
 rpio.init({
   gpiomem: true,
@@ -39,6 +41,7 @@ rpio.init({
 rpio.open(OPEN_PIN, rpio.INPUT, rpio.PULL_UP);
 rpio.open(CLOSE_PIN, rpio.INPUT, rpio.PULL_UP);
 rpio.open(BUTTON_PIN, rpio.OUTPUT);
+rpio.write(BUTTON_PIN, BUTTON_PASSIVE);
 
 function updateState() {
   const now = DateTime.now();
@@ -80,12 +83,12 @@ setInterval(() => {
 }, 500);
 
 function pushButton() {
-  rpio.write(BUTTON_PIN, rpio.HIGH);
+  rpio.write(BUTTON_PIN, BUTTON_ACTIVE);
   state.button = true;
   console.log("Pushing button");
 
   setTimeout(() => {
-    rpio.write(BUTTON_PIN, rpio.LOW);
+    rpio.write(BUTTON_PIN, BUTTON_PASSIVE);
     state.button = false;
     console.log("Releasing button");
   }, BUTTON_PRESS_MS);
